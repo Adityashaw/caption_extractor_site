@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from decouple import config
 from django.contrib.messages import constants as messages
 from pathlib import Path
-import mongoengine
 
 
 # Match django message tags with bootstrap
@@ -105,12 +104,6 @@ AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
 AWS_S3_SIGNATURE_VERSION = config('AWS_S3_SIGNATURE_VERSION')
 
-mongoengine.connect(
-    db=config('DB_NAME'),
-    host=config('DB_HOST'),
-    username=config('DB_USERNAME'),
-    password=config('DB_PASSWORD')
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

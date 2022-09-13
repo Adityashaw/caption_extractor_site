@@ -1,0 +1,34 @@
+{% extends "extractCaptionFromVideo/layout.html" %}
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<h2 class="pl-1">Upload videos and search embedded subtitles at blazing fast speed!</h2>
+
+<div class="row container-fluid justify-content-around mt-5">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3 clickable" data-href="{% url 'uploadVideo' %}">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Upload videos</h3>
+        <div class="col-10 d-flex align-items-center justify-content-center">
+          <img src="{{ listing.image_url }}" alt="Could not load image or broken link provided" onerror="this.onerror=null;this.src='{% static 'extractCaptionFromVideo/img/no_image.svg' %}';" width="90%">
+        </div>
+        <p class="card-text">Click here to upload videos</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3 clickable" data-href="{% url 'searchSubtitles' %}">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Search subtitles</h3>
+        <div class="col-10 d-flex align-items-center justify-content-center">
+          <img src="{{ listing.image_url }}" alt="Could not load image or broken link provided" onerror="this.onerror=null;this.src='{% static 'extractCaptionFromVideo/img/no_image.svg' %}';" width="90%">
+        </div>
+        <p class="card-text">Click here to select already uploaded videos and search the subtitles in it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

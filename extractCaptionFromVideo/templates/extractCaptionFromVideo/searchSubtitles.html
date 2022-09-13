@@ -1,0 +1,51 @@
+{% extends "extractCaptionFromVideo/layout.html" %}
+{% load static %}
+
+{% block title %}Search Subtitles here{% endblock %}
+
+{% block body %}
+<h2 class="pl-1">Choose video and search subtitles here!</h2>
+
+<div class="row container justify-content-around mt-5">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="videoNameSelect" class="form-label">Choose Video</label>
+      <select class="form-select" name="videoName" id="videoNameSelect">
+        {% for video in videos %}
+        <option value="{{video.video_name}}">{{video.video_name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="searchStringInput" aria-describedby="input for subtitles">Enter the text to be searched in the subtitles</label>
+      <input type="text" class="form-control" name="searchString" id="searchStringInput" placeholder="Enter text here">
+    </div>
+    <input type="submit" value="Search!">
+
+  </form>
+</div>
+
+
+{% if subtitles %}
+<p> Best matches are shown first </p>
+<div class="table-responsive mt-5">
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+    <th>Start timestamp</th>
+    <th>End timestamp</th>
+    <th>Exact subtitle in the video</th>
+  </thead>
+  <tbody>
+  {% for subtitle in subtitles|dictsortreversed:'ratio' %}
+  <tr>
+    <td>{{subtitle.start_time}}</td>
+    <td>{{subtitle.end_time}}</td>
+    <td>{{subtitle.text}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

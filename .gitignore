@@ -1,0 +1,23 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+# environment variables
+.env
+
+# virtual environment, if you are using
+.venv
+venv/
+
+# cache files
+__pycache__/
+
+# distribution / packaging
+*.egg-info/
+build/
+

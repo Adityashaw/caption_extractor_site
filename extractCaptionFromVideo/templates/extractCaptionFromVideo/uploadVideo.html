@@ -1,0 +1,22 @@
+{% extends "extractCaptionFromVideo/layout.html" %}
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<h2 class="pl-1">Upload videos here!</h2>
+
+<div class="row container-fluid justify-content-around mt-5">
+</div>
+
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="container d-flex">
+    {% csrf_token %}
+    <div class="border rounded-pill custom-file">
+      <input type="file" accept="video/*" class="custom-file-input" name="videoInput" id="videoInput"> <label class="custom-file-label" for="videoInput" aria-describedby="input for video">Choose a video</label>
+    </div>
+    <input type="submit" value="Upload">
+  </div>
+</form>
+{% endblock %}
